@@ -1,1 +1,1 @@
-"${deps[cyberghostvpn]}" --disconnect
+"${deps[cyberghostvpn]}" --stop

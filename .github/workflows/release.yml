@@ -1,0 +1,29 @@
+name: Release Bash Script
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to build
+        required: true
+        default: "1.0.0"
+
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract tag
+        if: github.event_name == 'push'
+        run: echo "TAG=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Set tag from input
+        if: github.event_name == 'workflow_dispatch'
+        run: echo "TAG=${{ github.event.inputs.tag }}" >> $GITHUB_ENV

@@ -1,6 +1,6 @@
 name: cgw
 help: CyberghostVPN Wrapper CLI
-version: 0.1.0
+version: 1.0.1
 extensible: cyberghostvpn
 
 dependencies:
