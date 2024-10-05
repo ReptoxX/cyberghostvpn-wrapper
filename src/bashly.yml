@@ -1,0 +1,34 @@
+name: cgw
+help: CyberghostVPN Wrapper CLI
+version: 0.1.0
+extensible: cyberghostvpn
+
+dependencies:
+  curl: install with $(green "apt install curl")
+  cyberghostvpn:
+
+commands:
+  - name: connect
+    alias: c
+    help: Connect to a VPN at specified location
+
+    args:
+      - name: countrycode
+        required: false
+        help: "Country code to connect to (default: current country)"
+
+    examples:
+      - cgw connect
+      - cgw connect US
+      - cgw connect DE
+    filters:
+      - enforce_root
+
+  - name: disconnect
+    alias: d
+    help: Disconnect from VPN
+    filters:
+      - enforce_root
+  - name: get-ip
+    alias: gi
+    help: Get your public IP address
